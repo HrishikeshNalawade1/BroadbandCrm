@@ -1,0 +1,73 @@
+<!-- Button trigger modal -->
+
+<button type="button" class="btn btn-primary float-right m-1" data-toggle="modal" data-target="#exampleModal" (click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Lead
+  </button>
+  <input style="width:30%" type="text" class="form-control mr-sm-2" placeholder="Search..." [(ngModel)]="filterTerm">
+  <form class="form-inline md-form mr-auto mb-2">
+   
+    <!-- <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" [(ngModel)]="filterTerm">  -->
+  <!-- < type="button" class="btn btn-primary float-right m-2" data-toggle="" data-target="#exampleModal"[(ngModel)]="filterTerm"="SearchClick()">Search -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+             <app-add-edit [lead]="lead" *ngIf="ActivateAddEditLeadComp"></app-add-edit>
+        </div>
+        
+      </div>
+    </div>
+  </div><br>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>LeadId</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>PhoneNo</th>
+            <th>Remark</th>
+            <th>Createdby</th>
+            <th>CreatedDate</th>
+            <th>Status</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let dataItem of leadList | filter:filterTerm">
+             <td>{{dataItem.LeadId}}</td>
+             <td>{{dataItem.Name}}</td>
+             <td>{{dataItem.City}}</td>
+             <td>{{dataItem.State}}</td>
+             <td>{{dataItem.Gender}}</td>
+             <td>{{dataItem.PhoneNo}}</td>
+             <td>{{dataItem.Remark}}</td>
+             <td>{{dataItem.CreatedBy}}</td>
+             <td>{{dataItem.CreatedDate}}</td>
+             <td>{{dataItem.Status}}</td>            
+             <td>
+              <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal" (click)="editClick(dataItem)"
+              data-backdrop="static" data-keyboard="false"
+              > Edit</button>
+              <button type="button" class="btn btn-primary float-right m-2" data-toggle="" data-target="#exampleModal" (click)="deleteClick(dataItem)"
+              data-backdrop="static" data-keyboard="false"
+              > Delete</button>
+             </td>
+    </tbody>
+
+</table>

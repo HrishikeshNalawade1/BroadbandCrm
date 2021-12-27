@@ -1,0 +1,140 @@
+ <div class="d-flex flex-row bd-highlight mb-5">
+ 
+     <div class="form-froup row" style="width: 30%;"> 
+     
+    
+        <div class="form-group" >
+            <label class="col-sm-2 col-form-label">Name</label>
+            <input type="text" class="form-control" #nm='ngModel' ngModel [(ngModel)]="Name" required minlength="4" maxlength="20" placeholder="Enter Your Name">
+            <div class="alert alert-danger" *ngIf= "nm.invalid && nm.touched">
+
+                <div *ngIf= "nm.errors?.['required']">Enter full name</div>
+            
+                <div *ngIf= "nm.errors?.['minlength']">Name should be minimum 4 letters</div>
+            </div>
+        </div>
+        
+          
+        <div class="form-group" >
+            <label class="col-sm-2 col-form-label">City</label>
+            <input type="text" class="form-control"  [(ngModel)]="City" placeholder="Enter City">
+        </div>
+  
+
+        <div class="form-group" >
+        <label class="col-sm-2 col-form-label">State</label>
+            <input type="text" class="form-control"  [(ngModel)]="State" placeholder="Enter State">
+        </div>
+
+        <div class="form-group" >
+            <label class="col-sm-3 col-form-label">Gender</label>
+           
+            <div class="custom-control custom-radio">
+                <input id="male" type="radio" class="custom-control-input" value="male" [(ngModel)]="Gender" ngModel required>
+                    <label class="custom-control-label" for="male">Male</label>
+                    </div>
+
+            <div class="custom-control custom-radio">
+                <input id="female" type="radio" class="custom-control-input" value="female" [(ngModel)]="Gender" ngModel required>
+                <label class="custom-control-label" for="female">Female</label>
+              </div>
+            
+            </div>
+        
+        <div class="form-group" >
+            <label>Phone </label>
+            <input type="tel" class="form-control" #ph='ngModel' ngModel [(ngModel)]="PhoneNo" maxlength="10" required pattern="[0-9]{10}" placeholder="Enter  Phone Number">
+            <div class="alert alert-danger"  *ngIf= "ph.invalid && ph.touched">
+                <div *ngIf= "ph.errors?.['required']">Enter Phone Number</div>
+                <div *ngIf= "ph.errors?.['pattern']">Enter Valid Phone Number</div>
+            </div>
+        </div>
+            
+
+
+        <div class="form-group" >
+            <label class="col-sm-2 col-form-label">Remark</label>
+                <input type="text" class="form-control" [(ngModel)]="Remark" placeholder="Enter Remark">
+            </div>
+
+        <!-- <div class="form-group" >
+            <label class="col-sm-2 col-form-label">Remark</label>
+            <div class="custom-control custom-radio">
+                <input id="Not approached" type="radio" class="custom-control-input" value="Not approached" [(ngModel)]="Remark" ngModel required>
+                    <label class="custom-control-label" for="Not approached">Not approached</label>
+
+                    <input id="Positive" type="radio" class="custom-control-input" value="Positive" [(ngModel)]="Remark" ngModel required>
+                     <label class="custom-control-label" for="Positive">Positive</label>
+
+                     <input id="Pending" type="radio" class="custom-control-input" value="Pending" [(ngModel)]="Remark" ngModel required>
+                     <label class="custom-control-label" for="Pending">Pending</label>
+                    </div> -->
+
+            <!-- <div class="form-group" >
+                <label class="col-sm-2 col-form-label">Created By</label>
+                    <input type="text" class="form-control" [(ngModel)]="CreatedBy" placeholder="Enter CreatedBy">
+                </div> -->
+
+
+                <div class="form-group" >
+                    <label class="col-sm-3 col-form-label">Created By</label>
+                   
+                    <div class="custom-control custom-radio">
+                        <input id="Admin1" type="radio" class="custom-control-input" value="Admin1" [(ngModel)]="CreatedBy" ngModel required>
+                            <label class="custom-control-label" for="Admin1">Admin1</label>
+
+                            
+
+                            </div>
+        
+                    <!-- <div class="custom-control custom-radio">
+                        <input id="Admin2" type="radio" class="custom-control-input" value="Admin2" [(ngModel)]="CreatedBy" ngModel required>
+                        <label class="custom-control-label" for="Admin2">Admin2</label>
+                      </div> -->
+                    
+                    </div>
+
+
+                <div class="form-group" >
+                    <label class="col-sm-2 col-form-label">Created Date</label>
+                        <input type="text" class="form-control" [(ngModel)]="CreatedDate" placeholder="Enter CreatedDate">
+                    </div>
+
+                    <!-- <label class="col-sm-2 col-form-label">Created Date</label>
+                    <input matInput placeholder="picker">
+                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker> -->
+
+                            <!-- <input matInput [matDatepicker]="CreatedDate" placeholder="Select Date">
+                            <mat-datepicker-toggle matSuffix [for]="CreatedDate"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker></mat-datepicker> -->
+
+
+                            <!-- <mat-form-field>
+                                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker startView="year" [startAt]="CreatedDate"></mat-datepicker>
+                              </mat-form-field> -->
+
+
+
+                    <div class="form-group" >
+                        <label class="col-sm-2 col-form-label">Status</label>
+                            <input type="text" class="form-control" [(ngModel)]="Status" placeholder="Enter Status">
+                        </div>
+    
+                       
+                    </div>
+ </div>
+ 
+ 
+ <div class="form-group" >
+    <button (click)="addLead()" *ngIf="lead.LeadId==0" class="btn btn-primary">
+        Add
+    </button></div>
+    
+    <div class="form-group" >
+    <button (click)="updateLead()" *ngIf="lead.LeadId!=0" class="btn btn-primary">
+        Update
+    </button> </div>
+     
